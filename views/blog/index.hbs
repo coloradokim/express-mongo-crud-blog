@@ -21,13 +21,11 @@
 
 <h3>Comments</h3>
    {{#each comments}}
-   <h4>{{commentText}} by {{commentName}}</h4>
-   <a href="blog/{{_id}}/comments">Edit Comment</a>
- </aside>
-  {{/each}}
-  {{/each}}
+     <h4>{{commentText}} by {{commentName}}</h4>
+     {{/each}}
 
+     <a href="blog/{{_id}}/comments">Edit Comment</a>
 
-
+    {{/each}}
 
 <a href="blog/new">New Post</a>

@@ -75,4 +75,10 @@ router.post('/blog/:id', function (req, res, next) {
   });
 });
 
+router.get('/blog/:id/comments', function (req, res, next) {
+  postCollection.findOne({_id: req.params.id}, function (err, record) {
+    res.render('blog/comments', {thePost: record})
+  })
+})
+
 module.exports = router;

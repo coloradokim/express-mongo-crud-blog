@@ -1,0 +1,8 @@
+{{#thePost}}
+  {{#each comments}}
+  <h4>id Number: {{id}} {{commentText}} by {{commentName}}</h4>
+  <form action="/asanas/{{_id}}/comments/delete" method="post">
+    <input type="submit" value="Delete Comment">
+  </form>
+  {{/each}}
+{{/thePost}}
