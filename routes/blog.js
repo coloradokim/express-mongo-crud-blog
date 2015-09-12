@@ -28,7 +28,11 @@ router.post('/blog', function (req, res, next) {
   if (errors.length) {
     res.render('blog/new', {errors: errors})
   } else {
-    postCollection.insert({title: req.body.title, author: req.body.author, blogPost: req.body.post});
+    postCollection.insert({
+      title: req.body.title,
+      author: req.body.author,
+      blogPost: req.body.post,
+      comments: [] });
     res.redirect('blog');
   }
 });
@@ -57,6 +61,18 @@ router.post('/blog/:id/delete', function (req, res, next) {
     if (err) throw err
   });
   res.redirect('/blog')
+});
+
+var counter = 0
+router.post('/blog/:id', function (req, res, next) {
+  counter++
+  req.body.id = counter
+  postCollection.findOne({_id:req.params.id}, function (err, record) {
+    record.comments.push(req.body);
+    postCollection.update({_id: req.params.id}, record, function (err, record) {
+      res.redirect('/blog');
+    });
+  });
 });
 
 module.exports = router;

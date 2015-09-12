@@ -16,9 +16,17 @@
       <td>{{blogPost}}</td>
     </tr>
     <a href="/blog/{{_id}}">Go To Post</a>
-    {{/each}}
   </tbody>
 </table>
+
+<h3>Comments</h3>
+   {{#each comments}}
+   <h4>{{commentText}} by {{commentName}}</h4>
+   <a href="blog/{{_id}}/comments">Edit Comment</a>
+ </aside>
+  {{/each}}
+  {{/each}}
+
 
 
 
