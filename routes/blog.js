@@ -15,8 +15,22 @@ router.get('/blog/new', function (req, res, next) {
 });
 
 router.post('/blog', function (req, res, next) {
-  postCollection.insert({title: req.body.title, author: req.body.author, blogPost: req.body.post});
-  res.redirect('blog');
+  var errors = [];
+  if(!req.body.title){
+    errors.push('Your post must have a title')
+  }
+  if(!req.body.author) {
+    errors.push(' Your post must have an author')
+  }
+  if(!req.body.post) {
+    errors.push(' Your post must have content')
+  }
+  if (errors.length) {
+    res.render('blog/new', {errors: errors})
+  } else {
+    postCollection.insert({title: req.body.title, author: req.body.author, blogPost: req.body.post});
+    res.redirect('blog');
+  }
 });
 
 router.get('/blog/:id', function (req, res, next) {
