@@ -19,6 +19,23 @@ router.post('/blog', function (req, res, next) {
   res.redirect('blog');
 });
 
+router.get('/blog/:id', function (req, res, next) {
+  postCollection.findOne({_id: req.params.id}, function (err, record) {
+    res.render('blog/show', {thePost: record});
+  });
+});
 
+router.get('/blog/:id/edit', function (req, res, next) {
+  postCollection.findOne({_id: req.params.id}, function (err, record) {
+    res.render('blog/edit', {thePost: record});
+  });
+});
+
+router.post('/blog/:id/update', function(req, res, next) {
+  postCollection.updateById(req.params.id, {title: req.body.title, author: req.body.author, blogPost: req.body.post}, function (err, record) {
+    if (err) throw err
+  });
+  res.redirect('/blog');
+});
 
 module.exports = router;
