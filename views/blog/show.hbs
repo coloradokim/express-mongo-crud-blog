@@ -2,4 +2,8 @@
 <h1>{{title}}</h1>
 <h2>{{author}}</h2>
 <p>{{blogPost}}</p>
+
+<form action="/blog/{{_id}}/delete" method="post">
+  <input type="submit" value="Delete Post">
+</form>
 {{/thePost}}

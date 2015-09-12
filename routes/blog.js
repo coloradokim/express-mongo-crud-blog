@@ -38,4 +38,11 @@ router.post('/blog/:id/update', function(req, res, next) {
   res.redirect('/blog');
 });
 
+router.post('/blog/:id/delete', function (req, res, next) {
+  postCollection.remove({_id: req.params.id}, function (err, record) {
+    if (err) throw err
+  });
+  res.redirect('/blog')
+});
+
 module.exports = router;
