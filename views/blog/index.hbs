@@ -1,0 +1,22 @@
+<h1>Welcome to g8's Shared Blog</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Post</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each allPosts}}
+    <tr>
+      <td>{{title}}</td>
+      <td>{{author}}</td>
+      <td>{{blogPost}}</td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+<a href="blog/new">New Post</a>
